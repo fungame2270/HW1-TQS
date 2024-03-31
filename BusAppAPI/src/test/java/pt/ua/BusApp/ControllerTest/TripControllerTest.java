@@ -2,6 +2,7 @@ package pt.ua.BusApp.ControllerTest;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -59,6 +60,7 @@ public class TripControllerTest {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", hasSize(2)))
             .andExpect(jsonPath("$[0].id", is(1)))
-            .andExpect(jsonPath("$[1].id", is(2)));
+            .andExpect(jsonPath("$[1].id", is(2)))
+            .andExpect(jsonPath("$[0].reservations").doesNotExist());
     }
 }

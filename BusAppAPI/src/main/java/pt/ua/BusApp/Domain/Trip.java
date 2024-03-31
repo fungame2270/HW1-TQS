@@ -43,7 +43,7 @@ public class Trip {
 
      @JsonIgnore
      @OneToMany(cascade = CascadeType.ALL)
-     private List<Reservation> Reservations;
+     private List<Reservation> reservations;
 
      @ManyToOne(cascade = CascadeType.ALL)
      @JoinColumn(name = "originCity_id")
