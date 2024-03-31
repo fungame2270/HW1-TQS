@@ -23,7 +23,7 @@ public class TripController {
         this.tripService = tripService;
     }
     
-    @GetMapping("/Trips")
+    @GetMapping("/trips")
     public ResponseEntity<List<Trip>> getAllTrips(){
         List<Trip> trips = tripService.getAllTrips();
 

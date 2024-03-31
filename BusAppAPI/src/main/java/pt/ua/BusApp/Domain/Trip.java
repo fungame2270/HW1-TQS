@@ -38,9 +38,6 @@ public class Trip {
      @Temporal(TemporalType.DATE)
      private LocalDate date;
 
-     @Column
-     private int ocupacy;
-
      @ManyToOne(cascade = CascadeType.ALL)
      @JoinColumn(name = "bus_id")
      private Bus bus;
