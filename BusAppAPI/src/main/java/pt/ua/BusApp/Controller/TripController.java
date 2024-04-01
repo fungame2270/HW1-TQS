@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import pt.ua.BusApp.Domain.Trip;
@@ -24,8 +25,9 @@ public class TripController {
     }
     
     @GetMapping("/trips")
-    public ResponseEntity<List<Trip>> getAllTrips(){
-        List<Trip> trips = tripService.getAllTrips();
+    public ResponseEntity<List<Trip>> getAllTrips(@RequestParam Long originCityId,@RequestParam Long destinationCityId){
+        
+        List<Trip> trips = tripService.getTripsByDestinationAndOrigin(originCityId,destinationCityId);
 
         return new ResponseEntity<>(trips,HttpStatus.OK);
     }

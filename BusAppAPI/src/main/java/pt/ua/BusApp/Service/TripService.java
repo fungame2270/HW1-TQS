@@ -6,5 +6,5 @@ import pt.ua.BusApp.Domain.Trip;
 
 public interface TripService {
     
-    public List<Trip> getAllTrips();
+    public List<Trip> getTripsByDestinationAndOrigin(Long originId,Long destinationId);
 }

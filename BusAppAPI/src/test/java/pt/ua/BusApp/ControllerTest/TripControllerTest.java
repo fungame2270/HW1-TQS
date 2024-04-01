@@ -52,9 +52,9 @@ public class TripControllerTest {
         trip2.setDate(LocalDate.of(2024, 1, 1));
         trips.add(trip2);
 
-        when(tripService.getAllTrips()).thenReturn(trips);
+        when(tripService.getTripsByDestinationAndOrigin(1L, 2L)).thenReturn(trips);
 
-        mvc.perform(get("/api/trips")
+        mvc.perform(get("/api/trips").param("originCityId", "1").param("destinationCityId", "2")
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", hasSize(2)))

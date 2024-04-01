@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
-import pt.ua.BusApp.Domain.Bus;
 import pt.ua.BusApp.Domain.City;
 import pt.ua.BusApp.Domain.Trip;
 import pt.ua.BusApp.Repository.TripRepository;
