@@ -31,7 +31,7 @@ public class ReservationServiceTest {
     private ReservationServiceImp service;
 
     @Test
-    public void getReservationByIdTest(){
+    void getReservationByIdTest(){
         Reservation res = new Reservation();
         res.setId(1L);
         res.setMorada("rua joao moni");
@@ -44,7 +44,7 @@ public class ReservationServiceTest {
     }
 
     @Test
-    public void saveReservationTest() throws Exception{
+    void saveReservationTest() throws Exception{
         Trip trip = new Trip();
         trip.setId(1L);
         trip.setOcupancy(10);

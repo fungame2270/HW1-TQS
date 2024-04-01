@@ -23,7 +23,7 @@ public class CityRepositoryTest {
     private CityRepository cityRepository;
 
     @Test
-    public void whenSaveCityGetCityById(){
+    void whenSaveCityGetCityById(){
         City city = new City("Lisbon");
 
         cityRepository.save(city);
@@ -34,7 +34,7 @@ public class CityRepositoryTest {
     }
 
     @Test
-    public void whenDeleteCityNotFound(){
+    void whenDeleteCityNotFound(){
         City city = new City("Lisbon");
 
         entityManager.persistAndFlush(city);
@@ -45,7 +45,7 @@ public class CityRepositoryTest {
     }
 
     @Test
-    public void findAllReturnAll(){
+    void findAllReturnAll(){
         City city = new City("Lisbon");
         City city2 = new City("Porto");
         entityManager.persist(city);

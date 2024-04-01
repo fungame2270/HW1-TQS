@@ -31,7 +31,7 @@ public class ReservationControllerTest {
     private ReservationService reservationService;
 
     @Test
-    public void getReservationByIdTest() throws Exception{
+    void getReservationByIdTest() throws Exception{
         Reservation res = new Reservation();
         res.setId(1L);
         res.setName("Tomas");
@@ -48,7 +48,7 @@ public class ReservationControllerTest {
     }
 
     @Test
-    public void postReservation() throws Exception{
+    void postReservation() throws Exception{
         Reservation res = new Reservation();
         res.setId(1L);
         res.setName("Tomas");

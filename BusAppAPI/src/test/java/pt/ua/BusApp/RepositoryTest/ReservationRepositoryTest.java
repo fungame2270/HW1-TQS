@@ -23,7 +23,7 @@ public class ReservationRepositoryTest {
     private ReservationRepository reservationRepository;
 
     @Test
-    public void whenSaveCityGetCityById(){
+    void whenSaveCityGetCityById(){
         Reservation reservation = new Reservation();
         reservation.setName("Tomás");
 
@@ -35,7 +35,7 @@ public class ReservationRepositoryTest {
     }
 
     @Test
-    public void whenDeleteCityNotFound(){
+    void whenDeleteCityNotFound(){
         Reservation reservation = new Reservation();
         reservation.setName("Tomás");
 
@@ -47,7 +47,7 @@ public class ReservationRepositoryTest {
     }
 
     @Test
-    public void findAllReturnAll(){
+    void findAllReturnAll(){
         Reservation reservation = new Reservation();
         reservation.setName("Tomás");
         Reservation reservation2 = new Reservation();

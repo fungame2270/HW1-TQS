@@ -34,7 +34,7 @@ public class TripControllerTest {
     private TripService tripService;
 
     @Test
-    public void getAllTrips() throws Exception{
+    void getAllTrips() throws Exception{
         Bus bus1 = new Bus("Avolta", 80);
         bus1.setId(2L);
         List<Trip> trips = new ArrayList<>();

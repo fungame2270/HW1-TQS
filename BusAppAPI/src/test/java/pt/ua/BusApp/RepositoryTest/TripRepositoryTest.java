@@ -25,7 +25,7 @@ public class TripRepositoryTest {
     private TripRepository tripRepository;
 
     @Test
-    public void whenSaveTripGetTripById(){
+    void whenSaveTripGetTripById(){
         Trip trip = new Trip();
         LocalDate date =  LocalDate.of(2000, 5, 20);
         trip.setDate(date);
@@ -38,7 +38,7 @@ public class TripRepositoryTest {
     }
 
     @Test
-    public void whenDeleteTripNotFound(){
+    void whenDeleteTripNotFound(){
         Trip trip = new Trip();
         LocalDate date =  LocalDate.of(2000, 5, 20);
         trip.setDate(date);
@@ -51,7 +51,7 @@ public class TripRepositoryTest {
     }
 
     @Test
-    public void findAllReturnAll(){
+    void findAllReturnAll(){
         Trip trip = new Trip();
         LocalDate date =  LocalDate.of(2000, 5, 20);
         trip.setDate(date);
@@ -68,7 +68,7 @@ public class TripRepositoryTest {
     }
 
     @Test
-    public void getTripsByDestinationAndOrigin(){
+    void getTripsByDestinationAndOrigin(){
         City lisbon = new City("libons");
         City porto = new City("Porto");
         City aveiro = new City("Aveiro");

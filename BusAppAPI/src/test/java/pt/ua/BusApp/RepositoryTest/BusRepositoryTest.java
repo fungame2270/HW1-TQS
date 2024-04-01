@@ -24,7 +24,7 @@ public class BusRepositoryTest {
     private BusRepository busRepository;
 
     @Test
-    public void whenSaveBus_andGetByIdThanGetBus(){
+    void whenSaveBus_andGetByIdThanGetBus(){
         Bus bus = new Bus();
         bus.setName("Avolta");
         bus.setCapacity(86);
@@ -38,7 +38,7 @@ public class BusRepositoryTest {
     }
 
     @Test
-    public void whenDeleteBusNotFound(){
+    void whenDeleteBusNotFound(){
         Bus bus = new Bus();
         bus.setName("Avolt");
         bus.setCapacity(86);
@@ -52,7 +52,7 @@ public class BusRepositoryTest {
     }
 
     @Test
-    public void findAllReturnAll(){
+    void findAllReturnAll(){
         Bus bus = new Bus("avolta",78);
         Bus bus2 = new Bus("desVolta",97);
         Bus bus3 = new Bus("simVolta",86);
