@@ -1,6 +1,10 @@
 package pt.ua.BusApp.ServiceTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,16 +19,21 @@ import pt.ua.BusApp.Service.Imp.CityServiceImp;
 @ExtendWith(MockitoExtension.class)
 class CityServiceTest {
     @Mock
-    private CityRepository carRepository;
+    private CityRepository repository;
 
     @InjectMocks
-    private CityServiceImp carService;
+    private CityServiceImp service;
 
     @Test
     void getAllCitiesTest(){
-        City city = new City("Tomas");
+        City city = new City("Lisbon");
+        City city2 = new City("Porto");
+        List<City> cities = Arrays.asList(city,city2);
 
-        assertThat(city).isEqualTo(city);
+        when(repository.findAll()).thenReturn(cities);
+
+        List<City> list = service.getAllCities();
+        assertThat(list).isEqualTo(cities);
     }
     
 }
