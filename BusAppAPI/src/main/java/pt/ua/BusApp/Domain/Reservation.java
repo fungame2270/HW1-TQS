@@ -42,7 +42,8 @@ public class Reservation {
 
     @Column
     private String cardType;
-
-    @Column int cardNumber;
+    
+    @Column 
+    private int cardNumber;
 
 }

@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -40,6 +41,9 @@ public class Trip {
      @ManyToOne(cascade = CascadeType.ALL)
      @JoinColumn(name = "bus_id")
      private Bus bus;
+
+     @Column
+     private int ocupancy;
 
      @JsonIgnore
      @OneToMany(cascade = CascadeType.ALL)
