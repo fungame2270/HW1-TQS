@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import pt.ua.BusApp.Domain.Bus;
+import pt.ua.BusApp.Domain.City;
 import pt.ua.BusApp.Domain.Trip;
 import pt.ua.BusApp.Repository.TripRepository;
 
@@ -24,7 +26,7 @@ public class TripRepositoryTest {
     private TripRepository tripRepository;
 
     @Test
-    public void whenSaveCityGetCityById(){
+    public void whenSaveTripGetTripById(){
         Trip trip = new Trip();
         LocalDate date =  LocalDate.of(2000, 5, 20);
         trip.setDate(date);
@@ -37,7 +39,7 @@ public class TripRepositoryTest {
     }
 
     @Test
-    public void whenDeleteCityNotFound(){
+    public void whenDeleteTripNotFound(){
         Trip trip = new Trip();
         LocalDate date =  LocalDate.of(2000, 5, 20);
         trip.setDate(date);
@@ -64,5 +66,28 @@ public class TripRepositoryTest {
         List<Trip> allCities = tripRepository.findAll();
 
         assertThat(allCities).hasSize(2).extracting(Trip::getDate).containsOnly(trip.getDate(),trip.getDate());
+    }
+
+    @Test
+    public void getTripsByDestinationAndOrigin(){
+        City lisbon = new City("libons");
+        City porto = new City("Porto");
+        City aveiro = new City("Aveiro");
+
+        Trip lisbonPorto = new Trip();
+        lisbonPorto.setOriginCity(lisbon);
+        lisbonPorto.setDestinationCity(porto);
+        Trip aveiroPorto = new Trip();
+        aveiroPorto.setOriginCity(aveiro);
+        aveiroPorto.setDestinationCity(porto);
+
+        entityManager.persist(lisbonPorto);
+        entityManager.persist(aveiroPorto);
+        entityManager.flush();
+
+        List<Trip> list = tripRepository.findByOriginCityAndDestinationCity(aveiro, porto);
+
+        assertThat(list).hasSize(1).extracting(Trip::getOriginCity).containsOnly(aveiroPorto.getOriginCity());
+
     }
 }

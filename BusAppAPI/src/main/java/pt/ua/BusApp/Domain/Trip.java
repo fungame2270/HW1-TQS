@@ -50,10 +50,10 @@ public class Trip {
      private List<Reservation> reservations;
 
      @ManyToOne(cascade = CascadeType.ALL)
-     @JoinColumn(name = "originCity_id")
+     @JoinColumn(name = "originCity")
      private City originCity;
 
      @ManyToOne(cascade = CascadeType.ALL)
-     @JoinColumn(name = "destinationCity_id")
+     @JoinColumn(name = "destinationCity")
      private City destinationCity;
 }
