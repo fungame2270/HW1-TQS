@@ -34,4 +34,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PROJECT_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: cd BusAppAPI && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fungame2270_HW1-TQS
+        run: cd BusAppAPI && mvn test && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=fungame2270_HW1-TQS
