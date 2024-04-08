@@ -1,6 +1,8 @@
 package pt.ua.BusApp.Service.Imp;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +30,13 @@ public class TripServiceImp implements TripService {
 
     @Override
     public List<Trip> getTripsByDestinationAndOrigin(Long originId,Long destinationId){
-        City origin = cityRepository.findById(originId).get();
-        City destination = cityRepository.findById(destinationId).get();
-        return tripRepository.findByOriginCityAndDestinationCity(origin,destination);
+        Optional<City> origin = cityRepository.findById(originId);
+        Optional<City> destination = cityRepository.findById(destinationId);
+        if (origin.isPresent() && destination.isPresent()){
+            return tripRepository.findByOriginCityAndDestinationCity(origin.get(),destination.get());
+        }else{
+            return new ArrayList<Trip>();
+        }
     }
 
     public List<Trip> getTripsByDestinationAndOriginCurrencyChange(Long originId,Long destinationId,String currecy){
