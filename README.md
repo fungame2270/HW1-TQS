@@ -3,9 +3,21 @@ A simple full-stack web application supplied with automated tests.
 
 
 
-# maven run sonarqube
-mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=BusApp \
-  -Dsonar.projectName='BusApp' \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.token=sqp_cc398a75edca93218b1deeaed26059406e191e0c
+# Executar projeto
+### Backend (BusAppAPI)
+- executar docker compose para a base de dados
+```sh
+docker-compose up # executar
+docker-compose down -v # remover volumes
+```
+- executar spring-boot
+```sh
+mvn spring-boot:run # executar app
+mvn test # executar tests
+```
+### Frontend (busfrontend)
+- executar o react
+```sh
+npm install # installar dependencia
+npm start # executar react
+```
