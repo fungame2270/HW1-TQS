@@ -1,4 +1,4 @@
-name: SonarCloud
+name: mavenTest
 on:
   push:
     branches:
