@@ -42,7 +42,7 @@ public class ReservationServiceImp implements ReservationService{
         reservation.setName(reservationRequest.getName());
         reservation.setMorada(reservationRequest.getMorada());
         reservation.setCardNumber(reservationRequest.getCardNumber());
-        reservation.setCardType(reservation.getCardType());
+        reservation.setCardType(reservationRequest.getCardType());
         reservation.setTrip(trip);
         reservation.setNif(reservationRequest.getNif());
         trip.setOcupancy(trip.getOcupancy() + 1);

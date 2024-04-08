@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import pt.ua.BusApp.Controller.TripController;
@@ -25,6 +26,7 @@ import pt.ua.BusApp.Domain.Trip;
 import pt.ua.BusApp.Service.TripService;
 
 @WebMvcTest(TripController.class)
+@ActiveProfiles("test")
 public class TripControllerTest {
 
     @Autowired
@@ -55,6 +57,36 @@ public class TripControllerTest {
         when(tripService.getTripsByDestinationAndOrigin(1L, 2L)).thenReturn(trips);
 
         mvc.perform(get("/api/trips").param("originCityId", "1").param("destinationCityId", "2")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(2)))
+            .andExpect(jsonPath("$[0].id", is(1)))
+            .andExpect(jsonPath("$[1].id", is(2)))
+            .andExpect(jsonPath("$[0].reservations").doesNotExist());
+    }
+
+    @Test
+    void getAllTripsWithCurrency() throws Exception{
+        Bus bus1 = new Bus("Avolta", 80);
+        bus1.setId(2L);
+        List<Trip> trips = new ArrayList<>();
+        Trip trip1 = new Trip();
+        trip1.setId(1L);
+        trip1.setReservations(new ArrayList<Reservation>());
+        trip1.setBus(bus1);
+        trip1.setDate(LocalDate.of(2024, 1, 1));
+        trips.add(trip1);
+
+        Trip trip2 = new Trip();
+        trip2.setId(2L);
+        trip2.setReservations(new ArrayList<Reservation>());
+        trip2.setBus(bus1);
+        trip2.setDate(LocalDate.of(2024, 1, 1));
+        trips.add(trip2);
+
+        when(tripService.getTripsByDestinationAndOriginCurrencyChange(1L, 2L,"EUR")).thenReturn(trips);
+
+        mvc.perform(get("/api/trips").param("originCityId", "1").param("destinationCityId", "2").param("currency", "EUR")
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$", hasSize(2)))
